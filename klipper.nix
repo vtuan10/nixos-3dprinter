@@ -3,6 +3,16 @@
     user = "root";
     group = "root";
     enable = true;
+    firmwares = {
+      mcu = {
+        enable = true;
+        # Generate this config by running klipper-genconf
+        # Currently broken: https://github.com/NixOS/nixpkgs/pull/200228
+        # Workaround: Run nix-shell -p python3 --command klipper-genconf instead
+        configFile = ./avr.cfg;
+        serial = "/dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_55639303235351D01152-if00";
+      };
+    };
     settings = {
       printer = {
         kinematics = "corexy";
